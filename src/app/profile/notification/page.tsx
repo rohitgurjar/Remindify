@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { showToast } from "@/app/components/toaster";
 
 const Notification = ({ token, profileData }: any) => {
   const firstReminderOptions = [
@@ -53,6 +54,14 @@ const Notification = ({ token, profileData }: any) => {
         }),
       }
     );
+
+    if (response.status === 200) {
+      showToast("Reminder Notification Update", "success");
+    }
+
+    if (response.status === 400) {
+      showToast("Reminder Notification not Update", "error");
+    }
   };
 
   useEffect(() => {
