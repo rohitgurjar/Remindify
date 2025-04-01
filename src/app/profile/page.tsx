@@ -55,7 +55,6 @@ export default async function Profile() {
     <Account
       key="account"
       token={user.user?.jwtToken}
-      userId={user.user?.userId}
       profileData={profileData.data}
     />,
     <Notification

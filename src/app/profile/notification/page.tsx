@@ -4,7 +4,32 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { showToast } from "@/app/components/toaster";
 
-const Notification = ({ token, profileData }: any) => {
+type ProfileData = {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  isLocked: boolean;
+  isActivated: boolean;
+  dateLastLoggedIn: string;
+  dateCurrentLoggedIn: string;
+  isActive: boolean;
+  ageSecret: boolean;
+  birthDate: string;
+  gender: string;
+  mobileNo: string | null;
+  firstReminder: number;
+  secondReminder: number;
+  isNewsAndOffers: boolean | null;
+  anniversaryDate: string;
+};
+
+type NotificationProps = {
+  token: string;
+  profileData: ProfileData;
+};
+
+const Notification: React.FC<NotificationProps> = ({ token, profileData }) => {
   const firstReminderOptions = [
     { key: "1 day before", value: 1 },
     { key: "2 days before", value: 2 },

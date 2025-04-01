@@ -33,8 +33,14 @@ interface AddReminderProps {
   token: string;
 }
 
+type Reminder = {
+  reminderCategoryId: string;
+  reminderCategoryDescription: string;
+  reminderCategoryShortcode: string;
+};
+
 const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
-  const [reminders, setReminders] = useState<any[]>([]);
+  const [reminders, setReminders] = useState<Reminder[]>([]);
   const [opendropdown, setOpendropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [reminderCategoryId, setReminderCategoryId] = useState(false);
