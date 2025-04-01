@@ -5,7 +5,34 @@ import AddReminderForm from "../add-reminder-form";
 import { useRouter } from "next/navigation";
 import { showToast } from "@/app/components/toaster";
 
-function ReminderList({ reminderData, token }: any) {
+interface reminderDataType {
+  reminderId: string;
+  userName: string;
+  emailAddress: string;
+  reminderCategoryId: string;
+  reminderCategoryDescription: string;
+  reminderDate: string; // If this is a Date object in future, change to Date type
+  age: string; // If it's a number, change to number
+  isReminderSent: boolean;
+  reminderTypeDescription: string | null;
+  reminderOwnerName: string;
+  moreDetail: string;
+  firstName: string;
+  lastName: string;
+  sendGreeting: boolean;
+  greetingMessage: string | null;
+  isGreetingSent: boolean;
+  turnOffReminder: boolean;
+  reminderName: string;
+  reminderOwnerId: string;
+}
+
+interface reminderDataProps {
+  token: string;
+  reminderData: reminderDataType[];
+}
+
+function ReminderList({ reminderData, token }: reminderDataProps) {
   const [open, setOpen] = useState(false);
   const [reminderListData, setReminderListData] = useState(false);
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
@@ -100,10 +127,10 @@ function ReminderList({ reminderData, token }: any) {
 
   return (
     <div>
-      {reminderData.data.length === 0 ? (
+      {reminderData.length === 0 ? (
         <p className="py-5 text-center">No reminders found.</p>
       ) : (
-        reminderData.data.map((reminder: any) => {
+        reminderData.map((reminder: any) => {
           return (
             <div
               key={reminder.reminderId}

@@ -30,7 +30,7 @@ interface ReminderListDataType {
 
 interface handleCloseType {
   handleClose: () => void;
-  reminderCategoryId: any;
+  reminderCategoryId: ReminderListDataType | any;
   token: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   reminderListData: ReminderListDataType;
