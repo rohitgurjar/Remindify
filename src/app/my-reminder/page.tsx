@@ -41,7 +41,10 @@ export default async function Dashboard() {
 
       <div className="container mx-auto py-5 px-4">
         <AddReminder token={user?.user?.jwtToken} />
-        <ReminderList reminderData={reminders} token={user?.user?.jwtToken} />
+        <ReminderList
+          reminderData={reminders.data}
+          token={user?.user?.jwtToken}
+        />
       </div>
     </>
   );
