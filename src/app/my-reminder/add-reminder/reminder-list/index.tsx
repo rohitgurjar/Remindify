@@ -9,7 +9,6 @@ function ReminderList({ reminderData, token }: any) {
   const [open, setOpen] = useState(false);
   const [reminderListData, setReminderListData] = useState(false);
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
-  const [reminderOnOff, setReminderOnOff] = useState(false);
   const router = useRouter();
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -68,12 +67,8 @@ function ReminderList({ reminderData, token }: any) {
     }
   };
 
-  const handleToggleReminder = (reminderId: string) => {
-    setReminderOnOff((prev) => {
-      const newState = !prev; // Compute new state
-      handleReminderOnOff(reminderId, newState); // Pass updated state
-      return newState; // Update the state
-    });
+  const handleToggleReminder = (reminderId: string, currentState: boolean) => {
+    handleReminderOnOff(reminderId, !currentState);
   };
 
   const handleReminderOnOff = async (
@@ -94,12 +89,12 @@ function ReminderList({ reminderData, token }: any) {
 
       if (response.status === 200) {
         // Soft refresh page to refetch data
-        showToast("Your reminder deleted successfully", "success");
+        showToast("Your reminder setting upated", "success");
         router.refresh();
       }
     } catch (error) {
       console.error("Error updating reminder:", error);
-      showToast("Failed to update reminder", "error");
+      showToast("Failed to update reminder setting", "error");
     }
   };
 
@@ -149,7 +144,12 @@ function ReminderList({ reminderData, token }: any) {
                 </button>
                 <button
                   className="bg-gray-200 p-2 rounded-full hover:bg-gray-300"
-                  onClick={() => handleToggleReminder(reminder.reminderId)}
+                  onClick={() =>
+                    handleToggleReminder(
+                      reminder.reminderId,
+                      reminder.turnOffReminder
+                    )
+                  }
                 >
                   {reminder.turnOffReminder ? "🔔" : "🔕"}
                 </button>

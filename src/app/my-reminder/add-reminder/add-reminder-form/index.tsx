@@ -6,12 +6,34 @@ import DateDropdown from "@/app/components/date-picker";
 import { showToast } from "@/app/components/toaster";
 import { useRouter } from "next/navigation";
 
+interface ReminderListDataType {
+  reminderId: string;
+  userName: string;
+  emailAddress: string;
+  reminderCategoryId: string;
+  reminderCategoryDescription: string;
+  reminderDate: string; // If this is a Date object in future, change to Date type
+  age: string; // If it's a number, change to number
+  isReminderSent: boolean;
+  reminderTypeDescription: string | null;
+  reminderOwnerName: string;
+  moreDetail: string;
+  firstName: string;
+  lastName: string;
+  sendGreeting: boolean;
+  greetingMessage: string | null;
+  isGreetingSent: boolean;
+  turnOffReminder: boolean;
+  reminderName: string;
+  reminderOwnerId: string;
+}
+
 interface handleCloseType {
   handleClose: () => void;
   reminderCategoryId: any;
   token: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  reminderListData: any;
+  reminderListData: ReminderListDataType;
 }
 
 interface TicketType {
@@ -56,13 +78,13 @@ const AddReminderForm = ({
       firstName: reminderListData?.firstName ?? "",
       lastName: reminderListData?.lastName ?? "",
       emailAddress: reminderListData?.emailAddress ?? "",
-
-      ...(reminderCategoryId.reminderCategoryShortcode === "ANNIVERSARY"
-        ? { reminderName: reminderListData?.reminderName ?? "" }
-        : {}),
-      // reminderName: reminderListData?.reminderName ?? "",
+      reminderName:
+        reminderCategoryId.reminderCategoryShortcode === "ANNIVERSARY"
+          ? reminderListData?.reminderName ?? ""
+          : "",
       moreDetail: reminderListData?.moreDetail ?? "",
     },
+
     validationSchema,
     onSubmit: async (values) => {
       try {

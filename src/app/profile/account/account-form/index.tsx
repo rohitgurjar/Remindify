@@ -32,10 +32,10 @@ interface AccountFormProps {
     ageSecret: boolean;
     birthDate: string;
     gender: string;
-    mobileNo: string;
+    mobileNo: string | null;
     firstReminder: number;
     secondReminder: number;
-    isNewsAndOffers: number;
+    isNewsAndOffers: boolean | null;
     anniversaryDate: string;
   };
   token: string;
