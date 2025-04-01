@@ -42,6 +42,10 @@ function ForgotPasswordDialog({ closeDialog }: props) {
         );
 
         const responseData = await response.json();
+
+        if (responseData.responceCode === 200) {
+          alert(responseData.message);
+        }
       } catch (error) {
         console.error("Error sending email:", error);
         alert(error);

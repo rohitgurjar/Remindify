@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import Tabing from "../components/tabing";
 import Account from "./account/page";
-import EmailSetting from "./email-setting/page";
 import ChangePassword from "./change-password/page";
 import Notification from "./notification/page";
 
@@ -48,7 +47,6 @@ export default async function Profile() {
 
   const tabNames = [
     { id: 0, description: "Account" },
-    // { id: 1, description: "Email" },
     { id: 1, description: "Notification" },
     { id: 2, description: "Change Password" },
   ];
@@ -60,7 +58,6 @@ export default async function Profile() {
       userId={user.user?.userId}
       profileData={profileData.data}
     />,
-    // <EmailSetting key="emailSetting" />,
     <Notification
       key="notification"
       token={user.user?.jwtToken}

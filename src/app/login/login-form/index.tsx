@@ -7,8 +7,6 @@ import * as Yup from "yup";
 import ForgotPasswordDialog from "@/app/components/forgot-password-dialog";
 import FormInput from "@/app/components/FormInput";
 import PasswordFormInput from "@/app/components/PasswordFormInput";
-import GoogleLogin from "@/app/google-login";
-import AppleLogin from "@/app/apple-login";
 
 interface SignInValues {
   email: string;

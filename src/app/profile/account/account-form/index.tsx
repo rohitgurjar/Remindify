@@ -1,22 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { getAllCountries } from "countries-and-timezones";
+import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FormInput from "@/app/components/FormInput";
 import DateDropdown from "@/app/components/date-picker";
+import { showToast } from "@/app/components/toaster";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
 });
-
-interface CountryProps {
-  label: string;
-  value: string;
-  timezones: string[];
-}
 
 interface Accountprops {
   firstName: string;
@@ -48,7 +42,6 @@ interface AccountFormProps {
 }
 
 const AccountForm: React.FC<AccountFormProps> = ({ userData, token }) => {
-  const [selectedCountry, setSelectedCountry] = useState<string>();
   const [selectedBday, setSelectedBday] = React.useState<string>("");
   const [selectedAnnivarsary, setSelectedAnnivarsary] =
     React.useState<string>("");
@@ -93,33 +86,16 @@ const AccountForm: React.FC<AccountFormProps> = ({ userData, token }) => {
           }),
         }
       );
+
+      if (response.status === 200) {
+        showToast("User Profile  Updated successfully", "success");
+      }
+
+      if (response.status === 400) {
+        showToast("User Profile not Updated", "error");
+      }
     },
   });
-
-  const ct = getAllCountries();
-
-  // const countries: CountryProps[] = Object.values(ct).map((country: any) => ({
-  //   label: country.name,
-  //   value: country.id,
-  //   timezones: country.timezones || [],
-  // }));
-
-  // const [Country, setCountry] = useState(() =>
-  //   Object.values(ct).map((country: any) => ({
-  //     label: country.name,
-  //     value: country.id,
-  //     timezones: country.timezones,
-  //   }))
-  // );
-
-  // const country = Country.map((items) => {});
-
-  // const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const selectedValue = event.target.value;
-  //   setSelectedCountry(selectedValue);
-  //   // const country = countries.find((c) => c.value === selectedValue);
-  //   // setTimezones(country ? country.timezones : []);
-  // };
 
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

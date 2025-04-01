@@ -4,15 +4,9 @@ type TableProps = {
   heading: { header: string; key: string }[];
   data: Array<{ [key: string]: React.ReactNode }>;
   onRowClick?: (rowData: any) => void;
-  loading: boolean;
 };
 
-const Table: React.FC<TableProps> = ({
-  heading,
-  data,
-  onRowClick,
-  loading,
-}) => {
+const Table: React.FC<TableProps> = ({ heading, data, onRowClick }) => {
   const handleRowClick = (rowData: any) => {
     if (onRowClick) onRowClick(rowData);
   };

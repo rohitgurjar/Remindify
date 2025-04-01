@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import AddReminderForm from "../add-reminder-form";
 import { useRouter } from "next/navigation";
 import { showToast } from "@/app/components/toaster";
