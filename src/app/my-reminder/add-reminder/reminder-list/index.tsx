@@ -34,7 +34,7 @@ interface reminderDataProps {
 
 function ReminderList({ reminderData, token }: reminderDataProps) {
   const [open, setOpen] = useState(false);
-  const [reminderListData, setReminderListData] = useState(false);
+  const [reminderListData, setReminderListData] = useState<reminderDataType>();
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
   const router = useRouter();
 
@@ -44,7 +44,7 @@ function ReminderList({ reminderData, token }: reminderDataProps) {
     setOpen(false);
   };
 
-  const handleOpen = (reminder: any) => {
+  const handleOpen = (reminder: reminderDataType) => {
     setOpen(true);
     setReminderListData(reminder);
   };
@@ -130,7 +130,7 @@ function ReminderList({ reminderData, token }: reminderDataProps) {
       {reminderData.length === 0 ? (
         <p className="py-5 text-center">No reminders found.</p>
       ) : (
-        reminderData.map((reminder: any) => {
+        reminderData.map((reminder: reminderDataType) => {
           return (
             <div
               key={reminder.reminderId}
