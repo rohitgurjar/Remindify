@@ -4,6 +4,12 @@ import AddReminderForm from "./add-reminder-form";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
+type ReminderCategory = {
+  reminderCategoryId: string;
+  reminderCategoryDescription: string;
+  reminderCategoryShortcode: string;
+};
+
 async function getReminders(token: string) {
   try {
     const response = await fetch(
@@ -33,17 +39,12 @@ interface AddReminderProps {
   token: string;
 }
 
-type Reminder = {
-  reminderCategoryId: string;
-  reminderCategoryDescription: string;
-  reminderCategoryShortcode: string;
-};
-
 const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
-  const [reminders, setReminders] = useState<Reminder[]>([]);
+  const [reminders, setReminders] = useState<ReminderCategory[]>([]);
   const [opendropdown, setOpendropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [reminderCategoryId, setReminderCategoryId] = useState(false);
+  const [reminderCategoryId, setReminderCategoryId] =
+    useState<ReminderCategory>();
   const [isOpen, setIsOpen] = useState(false);
 
   const searchParams = useSearchParams();
@@ -72,7 +73,7 @@ const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
     router.push(`?${params.toString()}`);
   };
 
-  const handleOpen = (reminderCategoryId: any) => {
+  const handleOpen = (reminderCategoryId: ReminderCategory) => {
     setOpendropdown(false);
     setReminderCategoryId(reminderCategoryId);
     setIsOpen(true);
