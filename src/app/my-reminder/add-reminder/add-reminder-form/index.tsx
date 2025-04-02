@@ -69,8 +69,6 @@ const AddReminderForm = ({
 }: handleCloseType) => {
   const [selectedDate, setSelectedDate] = React.useState<string>("");
 
-  console.log("reminderCategoryId", reminderCategoryId);
-
   const router = useRouter();
 
   React.useEffect(() => {
