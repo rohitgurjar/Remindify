@@ -28,9 +28,15 @@ interface ReminderListDataType {
   reminderOwnerId: string;
 }
 
+type ReminderCategory = {
+  reminderCategoryId: string;
+  reminderCategoryDescription: string;
+  reminderCategoryShortcode: string;
+};
+
 interface handleCloseType {
   handleClose: () => void;
-  reminderCategoryId: ReminderListDataType | any;
+  reminderCategoryId: ReminderCategory;
   token: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   reminderListData: ReminderListDataType;
@@ -62,6 +68,8 @@ const AddReminderForm = ({
   reminderListData,
 }: handleCloseType) => {
   const [selectedDate, setSelectedDate] = React.useState<string>("");
+
+  console.log("reminderCategoryId", reminderCategoryId);
 
   const router = useRouter();
 
