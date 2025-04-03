@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { showToast } from "@/app/components/toaster";
+import { showToast } from "@/components/toaster";
 
 type ProfileData = {
   userId: string;

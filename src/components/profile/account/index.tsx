@@ -3,7 +3,7 @@
 import React from "react";
 import AccountForm from "./account-form";
 
-type ProfileData = {
+interface ProfileData {
   userId: string;
   firstName: string;
   lastName: string;
@@ -15,23 +15,25 @@ type ProfileData = {
   isActive: boolean;
   ageSecret: boolean;
   birthDate: string;
-  gender: string;
-  mobileNo: string | null;
+  gender: "Male" | "Female" | "Other";
+  mobileNo: null;
   firstReminder: number;
   secondReminder: number;
-  isNewsAndOffers: boolean | null;
+  isNewsAndOffers: null;
   anniversaryDate: string;
-};
+}
 
-type NotificationProps = {
+export type AccountProp = {
+  userData: ProfileData;
   token: string;
-  profileData: ProfileData;
 };
 
-const Account: React.FC<NotificationProps> = ({ profileData, token }) => {
+const Account: React.FC<AccountProp> = ({ userData, token }) => {
+  console.log("profileData_profileData", userData);
+
   return (
     <div>
-      <AccountForm userData={profileData} token={token} />
+      <AccountForm userData={userData} token={token} />
     </div>
   );
 };

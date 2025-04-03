@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import ResendActivationEmailDialog from "../components/resend-activation-email-dialog";
+import ResendActivationEmailDialog from "@/components/resend-activation-email-dialog";
 
 const ResendActivationEmail: React.FC = () => {
-    const [isDialogOpen, setIsDialogOpen] = React.useState<boolean>(false);
+  const [isDialogOpen, setIsDialogOpen] = React.useState<boolean>(false);
 
   const openDialog = () => setIsDialogOpen(true);
   const closeDialog = () => setIsDialogOpen(false);

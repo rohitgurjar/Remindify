@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import AddReminderForm from "./add-reminder-form";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter, useSearchParams } from "next/navigation";
 
 type ReminderCategory = {
   reminderCategoryId: string;
@@ -47,11 +47,11 @@ const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
     useState<ReminderCategory>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState(
-    searchParams.get("searchText") || ""
-  );
+  // const searchParams = useSearchParams();
+  // const router = useRouter();
+  // const [searchTerm, setSearchTerm] = useState(
+  //   searchParams.get("searchText") || ""
+  // );
 
   useEffect(() => {
     async function fetchReminders() {
@@ -62,16 +62,16 @@ const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
     fetchReminders();
   }, [token]);
 
-  const handleSearch = (event: React.FormEvent) => {
-    event.preventDefault();
-    const params = new URLSearchParams(searchParams);
-    if (searchTerm) {
-      params.set("searchText", searchTerm);
-    } else {
-      params.delete("searchText");
-    }
-    router.push(`?${params.toString()}`);
-  };
+  // const handleSearch = (event: React.FormEvent) => {
+  //   event.preventDefault();
+  //   const params = new URLSearchParams(searchParams);
+  //   if (searchTerm) {
+  //     params.set("searchText", searchTerm);
+  //   } else {
+  //     params.delete("searchText");
+  //   }
+  //   router.push(`?${params.toString()}`);
+  // };
 
   const handleOpen = (reminderCategoryId: ReminderCategory) => {
     setOpendropdown(false);
@@ -118,16 +118,16 @@ const AddReminder: React.FC<AddReminderProps> = ({ token }) => {
         <div className="flex justify-between items-center">
           {/* Search Bar */}
           <form
-            onSubmit={handleSearch}
+            // onSubmit={handleSearch}
             className="flex justify-center relative"
           >
-            <input
+            {/* <input
               type="text"
               placeholder="Search reminders"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="border p-2 pl-10 rounded-full w-96 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+            /> */}
             <button
               type="submit"
               className="absolute left-3 top-1/2 transform -translate-y-1/2"

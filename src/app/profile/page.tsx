@@ -1,8 +1,8 @@
 import { auth } from "@/auth";
-import Tabing from "../components/tabing";
-import Account from "./account/page";
-import ChangePassword from "./change-password/page";
-import Notification from "./notification/page";
+import Tabing from "@/components/tabing";
+import Account from "@/components/profile/account";
+import ChangePassword from "@/components/profile/change-password";
+import Notification from "@/components/profile/notification";
 
 async function getUserProfile(userId: string, token: string) {
   try {
@@ -55,7 +55,7 @@ export default async function Profile() {
     <Account
       key="account"
       token={user.user?.jwtToken}
-      profileData={profileData.data}
+      userData={profileData.data}
     />,
     <Notification
       key="notification"

@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
-import AddReminder from "./add-reminder";
-import ReminderList from "./add-reminder/reminder-list";
+import AddReminder from "@/components/add-reminder";
+import ReminderList from "@/components/add-reminder/reminder-list";
 
 async function getReminders() {
   try {
