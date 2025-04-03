@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import ForgotPasswordDialog from "@/app/components/forgot-password-dialog";
-import FormInput from "@/app/components/FormInput";
-import PasswordFormInput from "@/app/components/PasswordFormInput";
+import ForgotPasswordDialog from "@/components/forgot-password-dialog";
+import FormInput from "@/components/FormInput";
+import PasswordFormInput from "@/components/PasswordFormInput";
 
 interface SignInValues {
   email: string;

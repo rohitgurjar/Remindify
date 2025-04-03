@@ -3,9 +3,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FormInput from "@/app/components/FormInput";
-import DateDropdown from "@/app/components/date-picker";
-import { showToast } from "@/app/components/toaster";
+import FormInput from "@/components/FormInput";
+import DateDropdown from "@/components/date-picker";
+import { showToast } from "@/components/toaster";
+import { AccountProp } from "..";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
@@ -18,30 +19,7 @@ interface Accountprops {
   ageSecret: boolean;
 }
 
-interface AccountFormProps {
-  userData: {
-    userId: string;
-    firstName: string;
-    lastName: string;
-    emailAddress: string;
-    isLocked: boolean;
-    isActivated: boolean;
-    dateLastLoggedIn: string;
-    dateCurrentLoggedIn: string;
-    isActive: boolean;
-    ageSecret: boolean;
-    birthDate: string;
-    gender: string;
-    mobileNo: string | null;
-    firstReminder: number;
-    secondReminder: number;
-    isNewsAndOffers: boolean | null;
-    anniversaryDate: string;
-  };
-  token: string;
-}
-
-const AccountForm: React.FC<AccountFormProps> = ({ userData, token }) => {
+const AccountForm: React.FC<AccountProp> = ({ userData, token }) => {
   const [selectedBday, setSelectedBday] = React.useState<string>("");
   const [selectedAnnivarsary, setSelectedAnnivarsary] =
     React.useState<string>("");

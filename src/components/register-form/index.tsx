@@ -3,10 +3,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup"; // Import Yup
-import FormInput from "@/app/components/FormInput";
-import SelectDropdown from "@/app/components/SelectInput";
+import FormInput from "@/components/FormInput";
+import SelectDropdown from "@/components/SelectInput";
 import Link from "next/link";
-import DateDropdown from "@/app/components/date-picker";
+import DateDropdown from "@/components/date-picker";
 
 type genderType = {
   value: string;

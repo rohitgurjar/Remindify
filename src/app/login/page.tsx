@@ -1,8 +1,8 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import LoginForm from "./login-form";
-import { showToast } from "../components/toaster";
+import LoginForm from "@/components/login-form";
+import { showToast } from "../../components/toaster";
 
 export default function Login() {
   return (

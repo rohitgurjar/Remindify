@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import AddReminderForm from "../add-reminder-form";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/app/components/toaster";
+import { showToast } from "@/components/toaster";
 
 interface reminderDataType {
   reminderId: string;

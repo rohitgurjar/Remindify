@@ -2,8 +2,8 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import PasswordFormInput from "@/app/components/PasswordFormInput";
-import { showToast } from "@/app/components/toaster";
+import PasswordFormInput from "@/components/PasswordFormInput";
+import { showToast } from "@/components/toaster";
 
 interface changePassword {
   existingpass: string;

@@ -2,12 +2,12 @@ import React from "react";
 
 interface FormInputProps {
   label: string;
-  type: string | number;
+  type: string;
   id: string;
   name: string;
   placeholder: string;
   required?: boolean;
-  value?: string | number | null;
+  value?: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   error?: string; // Error as a string
   touched?: boolean; // Touched as a boolean

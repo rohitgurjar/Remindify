@@ -1,4 +1,4 @@
-import RegisterForm from "./register-form";
+import RegisterForm from "@/components/register-form";
 
 const Register: React.FC = () => {
   return (
